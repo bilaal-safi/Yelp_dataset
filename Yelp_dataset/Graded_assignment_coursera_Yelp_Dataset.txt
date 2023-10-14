@@ -1,11 +1,16 @@
 Data Scientist Role Play: Profiling and Analyzing the Yelp Dataset Coursera Worksheet
 
-This is a 2-part assignment. In the first part, you are asked a series of questions that will help you profile and understand the data just like a data scientist would. For this first part of the assignment, you will be assessed both on the correctness of your findings, as well as the code you used to arrive at your answer. You will be graded on how easy your code is to read, so remember to use proper formatting and comments where necessary.
-
-In the second part of the assignment, you are asked to come up with your own inferences and analysis of the data for a particular research question you want to answer. You will be required to prepare the dataset for the analysis you choose to do. As with the first part, you will be graded, in part, on how easy your code is to read, so use proper formatting and comments to illustrate and communicate your intent as required.
-
-For both parts of this assignment, use this "worksheet." It provides all the questions you are being asked, and your job will be to transfer your answers and SQL coding where indicated into this worksheet so that your peers can review your work. You should be able to use any Text Editor (Windows Notepad, Apple TextEdit, Notepad ++, Sublime Text, etc.) to copy and paste your answers. If you are going to use Word or some other page layout application, just be careful to make sure your answers and code are lined appropriately.
-In this case, you may want to save as a PDF to ensure your formatting remains intact for you reviewer.
+Assignment Description:
+This is a 2-part assignment. In the first part, you are asked a series of questions that will help you profile
+and understand the data just like a data scientist would. For this first part of the assignment, you will be assessed 
+both on the correctness of your findings, as well as the code you used to arrive at your answer. You will be graded 
+on how easy your code is to read, so remember to use proper formatting and comments where necessary. In the second 
+part of the assignment, you are asked to come up with your own inferences and analysis of the data for a particular 
+research question you want to answer. You will be required to prepare the dataset for the analysis you choose to do.
+As with the first part, you will be graded, in part, on how easy your code is to read, so use proper formatting and 
+comments to illustrate and communicate your intent as required. For both parts of this assignment, use this "worksheet."
+It provides all the questions you are being asked, and your job will be to transfer your answers and SQL coding where 
+indicated into this worksheet so that your peers can review your work.
 
 
 
@@ -27,7 +32,8 @@ xi. user table =10000
 	
 *******************************************************************************************************
 
-2. Find the total distinct records by either the foreign key or primary key for each table. If two foreign keys are listed in the table, please specify which foreign key.
+2. Find the total distinct records by either the foreign key or primary key for each table. If two foreign keys 
+are listed in the table, please specify which foreign key.
 
 i. Business = 10000		 Primary key
 ii. Hours = 1562
@@ -71,27 +77,37 @@ where id IS NULL or name IS NULL					-- condition checking for NULL values on ea
 	
 4. For each table and column listed below, display the smallest (minimum), largest (maximum), and average (mean) value for the following fields:
 
-	i. Table: Review, Column: Stars					-- Code:  select  Min(stars) AS Minimum, MAX(stars) AS Maximum, AVG(stars) AS Average from review;
+	i. Table: Review, Column: Stars					
+	-- Code:  
+		select  Min(stars) AS Minimum, MAX(stars) AS Maximum, AVG(stars) AS Average from review;
 	
 		min:	1	max:	5	avg: 3.7082
 		
 	
-	ii. Table: Business, Column: Stars				-- Code:  select  Min(stars) AS Minimum, MAX(stars) AS Maximum, AVG(stars) AS Average from business;
+	ii. Table: Business, Column: Stars				
+	-- Code:  
+		select  Min(stars) AS Minimum, MAX(stars) AS Maximum, AVG(stars) AS Average from business;
 	
 		min:	1.0	max:	5.0	avg: 3.6549
 		
 	
-	iii. Table: Tip, Column: Likes					--Code:   select  Min(likes) AS Minimum, MAX(likes) AS Maximum, AVG(likes) AS Average from tip;
+	iii. Table: Tip, Column: Likes					
+	--Code:   
+		select  Min(likes) AS Minimum, MAX(likes) AS Maximum, AVG(likes) AS Average from tip;
 	
 		min:	0	max:	2	avg: 0.0144
 		
 	
-	iv. Table: Checkin, Column: Count				--Code:   select  Min(count) AS Minimum, MAX(count) AS Maximum, AVG(count) AS Average from checkin;
+	iv. Table: Checkin, Column: Count				
+	--Code:   
+		select  Min(count) AS Minimum, MAX(count) AS Maximum, AVG(count) AS Average from checkin;
 	
 		min:	1	max:	53	avg: 1.9414
 		
 	
-	v. Table: User, Column: Review_count				--Code:   select  Min(review_count) AS Minimum, MAX(review_count) AS Maximum, AVG(review_count) AS Average from user;
+	v. Table: User, Column: Review_count				
+	--Code:   
+		select  Min(review_count) AS Minimum, MAX(review_count) AS Maximum, AVG(review_count) AS Average from user;
 	
 		min: 0		max: 2000	avg: 24.2995
 		
@@ -217,7 +233,8 @@ Copy and Paste the Resulting Table Below (2 columns – star rating and count):
 
 	Please explain your findings and interpretation of the results:
 
-	The answer is no. Because if you look into the results of the query, you will find it easily that more reviews do not guarantee high number of fans.
+	The answer is no. Because if you look into the results of the query, you will find it easily 
+	that more reviews do not guarantee high number of fans.
 
 	SELECT name, review_count AS total_reviews, fans
 	FROM user
@@ -268,7 +285,7 @@ in total_count column are not positively correlated. There is a small trend in f
 
 	SQL code used to arrive at answer:
 
-	SELECT count(id) AS Usage_of_Word_love				-- count all where the text column contains any combination of the characters like 'love'
+	SELECT count(id) AS Usage_of_Word_love		-- count all where the text column contains any combination of the characters like 'love'
 	FROM review
 	WHERE text LIKE '%love%';
 +--------------------+
@@ -277,7 +294,7 @@ in total_count column are not positively correlated. There is a small trend in f
 |               1780 |
 +--------------------+
 
-	SELECT count(id) AS Usage_of_Word_Hate				---- count all where the text column contains any combination of the characters like 'hate'
+	SELECT count(id) AS Usage_of_Word_Hate		---- count all where the text column contains any combination of the characters like 'hate'
 	FROM review
 	WHERE text LIKE '%hate%';
 +--------------------+
@@ -318,7 +335,9 @@ in total_count column are not positively correlated. There is a small trend in f
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Part 2: Inferences and Analysis
 
-1. Pick one city and category of your choice and group the businesses in that city or category by their overall star rating. Compare the businesses with 2-3 stars to the businesses with 4-5 stars and answer the following questions. Include your code.
+1. Pick one city and category of your choice and group the businesses in that city or category by their 
+overall star rating. Compare the businesses with 2-3 stars to the businesses with 4-5 stars and answer 
+the following questions. Include your code.
 	
 
 
@@ -381,7 +400,8 @@ Group 1 is 2-3 stars
 Group 2 is 4-5 stars 
 CITY is Phoenix
 
-Yes. If we analyse the below given output, the number of businesses for group 2 is higher than number of businesses for group 1. To conclude, higher rating businesses 
+Yes. If we analyse the below given output, the number of businesses for group 2 is higher than number 
+of businesses for group 1. To conclude, higher rating businesses 
 are larger in number than lower rating businesses in the city of Phoenix,AZ.
 +---------+-------+-------+------------------+
 | city    | state | stars | numberOFBusiness |
@@ -400,11 +420,11 @@ SQL code used for analysis:
  i) GROUP 1:
 	SELECT COUNT(b.id) AS numberOfBusiness, b.city, b.state, b.stars, h.hours
 	FROM business b
-	INNER JOIN hours h								--Join with table Hours to compare the distribution of hours for both groups
+	INNER JOIN hours h		--Join with table Hours to compare the distribution of hours for both groups
 	ON b.id=h.business_id
 	WHERE city Like '%Phoenix%'
 	GROUP BY b.stars
-	HAVING stars BETWEEN 2.0 AND 3.0						-- 2.0 and 3.0 are our predefined group 1
+	HAVING stars BETWEEN 2.0 AND 3.0	-- 2.0 and 3.0 are our predefined group 1
 	ORDER BY stars;	
    GROUP 2:
 	SELECT COUNT(b.id) AS numberOfBusiness, b.city, b.state, b.stars, h.hours
@@ -413,7 +433,7 @@ SQL code used for analysis:
 	ON b.id=h.business_id
 	WHERE city Like '%Phoenix%'
 	GROUP BY b.stars
-	HAVING stars BETWEEN 4.0 AND 5.0						-- 4.0 and 5.0 are our predefined group 2
+	HAVING stars BETWEEN 4.0 AND 5.0	-- 4.0 and 5.0 are our predefined group 2
 	ORDER BY stars;	
 
  ii) GROUP 1:
@@ -441,7 +461,9 @@ SQL code used for analysis:
 *******************************************************************************************************
 
 
-2. Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer.
+2. Group business based on the ones that are open and the ones that are closed. What differences can you
+find between the ones that are still open and the ones that are closed? List at least two differences 
+and the SQL code you used to arrive at your answer.
 	
 	 is_open=1 (Open business)
 	 is_open=0 (closed business) 
@@ -449,7 +471,8 @@ SQL code used for analysis:
 i. Difference 1:
               Businesses that are still open have greater number of reviews as compared to closed businesses. (As shown in output)
 ii. Difference 2:
-              Businesses that are still open have higher ratings (AVG(stars)= 3.679) as compared to closed businesses (AVG (stars)= 3.520). (Shown in output)
+              Businesses that are still open have higher ratings (AVG(stars)= 3.679) as compared 
+	      to closed businesses (AVG (stars)= 3.520). (Shown in output)
     
 OUTPUT:
 +-----------+---------------+-------------------+--------------------+---------+
@@ -467,9 +490,14 @@ SQL code used for analysis:
 *******************************************************************************************************
 	
 	
-3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.
+3. For this last part of your analysis, you are going to choose the type of analysis you want to 
+   conduct on the Yelp dataset and are going to prepare the data for analysis.
 
-Ideas for analysis include: Parsing out keywords and business attributes for sentiment analysis, clustering businesses to find commonalities or anomalies between them, predicting the overall star rating for a business, predicting the number of fans a user will have, and so on. These are just a few examples to get you started, so feel free to be creative and come up with your own problem you want to solve. Provide answers, in-line, to all of the following:
+Ideas for analysis include: Parsing out keywords and business attributes for sentiment analysis,
+clustering businesses to find commonalities or anomalies between them, predicting the overall star rating
+for a business, predicting the number of fans a user will have, and so on. These are just a few examples
+to get you started, so feel free to be creative and come up with your own problem you want to solve.
+Provide answers, in-line, to all of the following:
 	
 i. Indicate the type of analysis you chose to do:
         
@@ -478,10 +506,12 @@ i. Indicate the type of analysis you chose to do:
          
 ii. Write 1-2 brief paragraphs on the type of data you will need for your analysis and why you chose that data:
                   -I need data from two tables i.e business and category        
-                  -From business table, I will take data about name of the restaurant, location city, people reviews in the form of ratings, and whether the business is still open or not.
+                  -From business table, I will take data about name of the restaurant, location city, people reviews
+		   in the form of ratings, and whether the business is still open or not.
 		  -From Category table, I will just need category of the business to inves; restaurants in our case.
 		  -I will relate both tables through Inner join and will extract the useful information for the investors
-		  - Only those restuarants are recommended to invest in which are still open and have received good feedback from the people. (Threshhold set to rating equal to or greater than 3.0/5.0 just to define the reputation)
+		  - Only those restuarants are recommended to invest in which are still open and have received good feedback
+		   from the people. (Threshhold set to rating equal to or greater than 3.0/5.0 just to define the reputation)
 
 iii. Output of your finished dataset:
 +----------------------------------+-----------------+-------------+--------------+-------+---------+-----------------+
@@ -518,19 +548,20 @@ iii. Output of your finished dataset:
 iv. Provide the SQL code you used to create your final dataset:
 
 
-SELECT SUBSTR(b.name,1,32) AS Business_Name,			--SUBSTR used to show the names of business to only mentioned range as some names are two long to include
-b.city,								--Each column is prefixed
+SELECT SUBSTR(b.name,1,32) AS Business_Name,	--SUBSTR used to show the names of business to only mentioned range as some names are two long to include
+b.city,						--Each column is prefixed
 c.category, 
 b.review_count,
 b.stars, 
 b.is_open,
-CASE								--Used CASE instead of WHERE just to revise the the lesson contents
+CASE						--Used CASE instead of WHERE just to revise the the lesson contents
     WHEN is_open=1 AND stars >= 3.0  THEN 'Recommended'
     ELSE 'Not Recommended'
 END Recommendations
 FROM business b
 INNER JOIN category c
-    ON b.id=c.business_id					-- if the column names were similar in both tables, we would use USING to compress the length of code. But here not possible to be included in the JOIN condition
+    ON b.id=c.business_id		-- if the column names were similar in both tables, we would use USING 
+					to compress the length of code. But here not possible to be included in the JOIN condition
 WHERE c.category='Restaurants'
 GROUP BY city
 ORDER BY city ASC;
